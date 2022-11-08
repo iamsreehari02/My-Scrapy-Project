@@ -36,7 +36,12 @@ class MySpider(CrawlSpider):
 
                 },
             'Added_on' : response.css('span._812aa185::text')[4].get(),
-            'Furnishing' : response.css('span._812aa185::text')[3].get()
+            'Furnishing' : response.css('span._812aa185::text')[3].get(),
+            'Description' : response.css('span._2a806e1e::text').get(),
+            'Amenities' : response.css('span._005a682a::text')[0].get()+str(' & ')+response.css('span._005a682a::text')[1].get()+str(' & ')+response.css('span._005a682a::text')[2].get()+str(' & ')+response.css('span._005a682a::text')[3].get(),
+            'Breadcrumbs' : response.css('span._327a3afc::text')[1].get()+str(' > ')+response.css('span._327a3afc::text')[2].get()+str(' > ')+response.css('span._327a3afc::text')[3].get(),
+            'Image_link' : response.css('img.bea951ad').attrib['src']
+          
             
         }
         
