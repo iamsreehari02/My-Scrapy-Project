@@ -9,8 +9,13 @@ class ScraperMe(scrapy.Spider):
         for property in response.css('div.d6e81fd0'):
             yield {
                 'property_id':  property.css('div._7afabd84::text').get(),
-                'price': property.css('span.f343d9ce::text').get(),
-                'property_type':  property.css('div._9a4e3964::text').get()
+                'price': 
+                        {
+                    'Currency' : property.css('span.c2cc9762::text').get(),
+                    'Amount' : property.css('span.f343d9ce::text').get()
+                        },
+                    
+                'property_type':  property.css('div._9a4e3964::text').get(),
                 
                 }
         next_page = response.css('a.b7880daf').attrib['href']
