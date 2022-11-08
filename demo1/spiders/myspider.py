@@ -28,5 +28,15 @@ class MySpider(CrawlSpider):
             },
             'Location': response.css('div._1f0f1758::text').get(),
             'Purpose': response.css('span._812aa185::text')[1].get(),
-            'Property_Type' : response.css('span._812aa185::text')[0].get()
+            'Property_Type' : response.css('span._812aa185::text')[0].get(),
+            'Bed_Bath' : 
+                { 
+                    'Bedroom' : response.css('span.fc2d1086::text')[0].get(),
+                    'Bathroom' : response.css('span.fc2d1086::text')[1].get()
+
+                },
+            'Added_on' : response.css('span._812aa185::text')[4].get(),
+            'Furnishing' : response.css('span._812aa185::text')[3].get()
+            
         }
+        
