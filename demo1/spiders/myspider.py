@@ -15,7 +15,12 @@ class ScraperMe(scrapy.Spider):
                     'Amount' : property.css('span.f343d9ce::text').get()
                         },
                     
-                'property_type':  property.css('div._9a4e3964::text').get(),
+                'property_type' :  property.css('div._9a4e3964::text').get(),
+                'bed_bath_size' : {
+                    'bed' : property.css('span.b6a29bc0::text')[0].get(),
+                    'bath' :property.css('span.b6a29bc0::text')[1].get() 
+                    # 'size' :                
+                     }, 
                 
                 }
         next_page = response.css('a.b7880daf').attrib['href']
@@ -23,3 +28,4 @@ class ScraperMe(scrapy.Spider):
             yield response.follow(next_page, callback=self.parse)
 
             
+
